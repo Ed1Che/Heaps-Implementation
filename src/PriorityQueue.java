@@ -36,6 +36,18 @@ public class PriorityQueue {
         heap.set(i, heap.get(j));
         heap.set(j, temp);
     }
+    public void insert(int priority, String item) {
+        heap.add(new HeapNode(priority, item));
+        bubbleUp(heap.size() - 1);
+    }
+
+    private void bubbleUp(int index) {
+        int parentIndex = parent(index);
+        if (index > 0 && heap.get(index).priority < heap.get(parentIndex).priority) {
+            swap(index, parentIndex);
+            bubbleUp(parentIndex);
+      }
+    }
 
 
 }
