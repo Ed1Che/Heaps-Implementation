@@ -36,9 +36,47 @@ public class PriorityQueue {
         heap.set(i, heap.get(j));
         heap.set(j, temp);
     }
+
     public void insert(int priority, String item) {
         heap.add(new HeapNode(priority, item));
         bubbleUp(heap.size() - 1);
+    }
+
+    public boolean isEmpty() {
+        return heap.size() == 0;
+    }
+
+    public String delete() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Priority Queue is empty.");
+        }
+    
+        String rootItem = heap.get(0).item;
+        heap.set(0, heap.get(heap.size() - 1));
+        heap.remove(heap.size() - 1);
+    
+        if (!isEmpty()) {
+            bubbleDown(0);
+        }
+        return rootItem;
+    }
+    
+    private void bubbleDown(int index) {
+        int left = leftChild(index);
+        int right = rightChild(index);
+        int smallest = index;
+    
+        if (left < heap.size() && heap.get(left).priority < heap.get(smallest).priority) {
+            smallest = left;
+        }
+        if (right < heap.size() && heap.get(right).priority < heap.get(smallest).priority) {
+            smallest = right;
+        }
+    
+        if (smallest != index) {
+            swap(index, smallest);
+            bubbleDown(smallest);
+        }
     }
 
     private void bubbleUp(int index) {
@@ -48,6 +86,8 @@ public class PriorityQueue {
             bubbleUp(parentIndex);
       }
     }
+
+    
 
 
 }
