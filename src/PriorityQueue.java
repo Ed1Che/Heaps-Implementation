@@ -37,6 +37,12 @@ public class PriorityQueue {
         heap.set(j, temp);
     }
 
-
+    public void display() {
+        System.out.print("Priority Queue: ");
+        for (HeapNode node : heap) {
+            System.out.print("(Priority: " + node.priority + ", Item: " + node.item + ") ");
+        }
+        System.out.println();
+    }
 }
 
