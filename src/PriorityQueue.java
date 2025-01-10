@@ -40,7 +40,13 @@ public class PriorityQueue {
         heap.add(new HeapNode(priority, item));
         bubbleUp(heap.size() - 1);
     }
-
+    public String peek() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Priority Queue is empty.");
+        }
+        return heap.get(0).item;
+    }
+    
     private void bubbleUp(int index) {
         int parentIndex = parent(index);
         if (index > 0 && heap.get(index).priority < heap.get(parentIndex).priority) {
