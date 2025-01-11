@@ -79,6 +79,14 @@ public class PriorityQueue {
         }
     }
 
+
+    public String peek() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Priority Queue is empty.");
+        }
+        return heap.get(0).item;
+    }
+    
     private void bubbleUp(int index) {
         int parentIndex = parent(index);
         if (index > 0 && heap.get(index).priority < heap.get(parentIndex).priority) {
@@ -86,6 +94,10 @@ public class PriorityQueue {
             bubbleUp(parentIndex);
       }
     }
+    public int size() {
+        return heap.size();
+    }
+    
 
     
 

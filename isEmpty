@@ -1,0 +1,6 @@
+public String peek() throws Exception {
+    if (isEmpty()) {
+        throw new Exception("Priority Queue is empty.");
+    }
+    return heap.get(0).item;
+}
