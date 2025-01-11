@@ -54,6 +54,10 @@ public class PriorityQueue {
             bubbleUp(parentIndex);
       }
     }
+    public int size() {
+        return heap.size();
+    }
+    
 
 
 }
